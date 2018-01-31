@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XF.AzureApp.Views.EditarAtividade">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar" Command="{Binding RegisterCommand}" 
+                     Order="Primary" Priority="1" />
+        <ToolbarItem Text="Cancelar" Command="{Binding CancelarCommand}" 
+                     Order="Primary" Priority="2" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="5,5,0,0">
+            <Label Text="Data de Entrega:" />
+            <DatePicker x:Name="dteData" Date="{Binding Atividade.DataEntrega}" />
+            <Label Text="Breve descrição" />
+            <Editor Text="{Binding Atividade.Descricao}" 
+                    HeightRequest="130" BackgroundColor="Silver" />
+            <Label Text="Tipo de Avaliação" />
+            <Picker x:Name="picker" Title="Selecione o tipo de avaliação"
+                    SelectedItem="{Binding Atividade.TipoAvaliacao}" HorizontalOptions="FillAndExpand">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Parcial</x:String>
+                        <x:String>Seletiva</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label Text="Valor Avaliação" />
+            <Slider Minimum="0" Maximum="10" Value="{Binding Atividade.ValorAvaliacao}"
+                     ValueChanged="Slider_ValueChanged" x:Name="sdlValorAvaliacao"/>
+            <Label x:Name="lblValorAvaliacao" Text="" 
+                   HorizontalOptions="Center" VerticalOptions="Center" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
