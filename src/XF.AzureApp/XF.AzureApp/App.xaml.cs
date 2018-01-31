@@ -17,7 +17,9 @@ namespace XF.AzureApp
 		{
 			InitializeComponent();
 
-            MainPage = new NavigationPage(new EditarAtividade());
+            //MainPage = new NavigationPage(new EditarAtividade());
+            //MainPage = new XF.AzureApp.MainPage();
+            MainPage = new NavigationPage(new HomeView());
         }
 
         public static void Init(IAuthenticate authenticator)
