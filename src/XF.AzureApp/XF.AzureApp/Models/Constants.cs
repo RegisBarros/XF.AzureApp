@@ -2,7 +2,7 @@
 {
     public static class Constants
     {
-        public static string ApplicationURL = @"INSERT_APP_SERVICE_URL_HERE";
+        public static string ApplicationURL = @"https://fiap-azure-app.azurewebsites.net";
 
         public static string URLScheme = "INSERT_URL_SCHEME_HERE";
     }

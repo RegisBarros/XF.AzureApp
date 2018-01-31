@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using Newtonsoft.Json;
 using System;
 
 namespace XF.AzureApp.Models
@@ -10,24 +11,27 @@ namespace XF.AzureApp.Models
             DataCadastro = DateTime.Now;
         }
 
+        string id;
         [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
+        public string Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
-        [JsonProperty(PropertyName = "dataCadastro")]
         public DateTime DataCadastro { get; set; }
 
-        [JsonProperty(PropertyName = "dataEntrega")]
         public DateTime DataEntrega { get; set; }
 
         // parcial ou substitutiva
-        [JsonProperty(PropertyName = "tipoAvaliacao")]
         public string TipoAvaliacao { get; set; }
 
-        [JsonProperty(PropertyName = "descricao")]
         public string Descricao { get; set; }
 
         // 0 a 10
-        [JsonProperty(PropertyName = "valorAvaliacao")]
         public int ValorAvaliacao { get; set; }
+
+        [Version]
+        public string Version { get; set; }
     }
 }

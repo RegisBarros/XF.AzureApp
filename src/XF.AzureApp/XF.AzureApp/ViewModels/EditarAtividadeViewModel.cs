@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XF.AzureApp.Models;
@@ -17,7 +18,7 @@ namespace XF.AzureApp.ViewModels
 
         public AtividadeService Service => new AtividadeService();
 
-        public ICommand CancelarCommand => new Command(Cancelar);
+        public ICommand CancelarCommand => new Command(async () => await Cancelar());
 
         public ICommand RegisterCommand => new Command(async () => await Registrar());
 
@@ -28,12 +29,21 @@ namespace XF.AzureApp.ViewModels
 
         public async Task Registrar()
         {
-            await Service.Salvar(Atividade);
+            try
+            {
+                await Service.Salvar(Atividade);
+
+                await App.Current.MainPage.Navigation.PopAsync();
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Erro", ex.Message, "OK"); 
+            }
         }
 
-        public void Cancelar()
+        public async Task Cancelar()
         {
-
+            await App.Current.MainPage.Navigation.PopAsync();
         }
     }
 }
