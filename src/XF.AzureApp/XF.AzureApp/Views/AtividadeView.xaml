@@ -4,14 +4,14 @@
              x:Class="XF.AzureApp.Views.AtividadeView"
              x:Name="pageAtividade"
              Title="Atividades">
-    
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Adicionar" x:Name="btnAddAtividade" 
-                     Clicked="AddAtividadeButtonClicked" Order="Primary" Priority="1" />
+        <ToolbarItem Text="Adicionar"  Command="{Binding NovoCommand}" Order="Primary" Priority="1" />
+        <!--<ToolbarItem Text="Sair" x:Name="btnSair" Command="{Binding OnSairCMD}" Order="Secondary" Priority="1" />-->
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <Grid Padding="5" RowSpacing="10">
+        <Grid Padding="20" RowSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -21,27 +21,21 @@
                 <SearchBar Placeholder="Pesquisar por nome" Text="{Binding PesquisaPorNome}" />
             </StackLayout>
 
-            <StackLayout x:Name="layLista" Grid.Row="1" Padding="7">
-                <ListView x:Name="lstAtividades" ItemsSource="{Binding Atividades}"
-                          SelectedItem="{Binding Selecionada, Mode=TwoWay}" RowHeight="55">
+            <StackLayout x:Name="layLista" Grid.Row="1" Padding="20">
+                <ListView x:Name="lstAtividades" ItemsSource="{Binding Atividades}" HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <ViewCell.ContextActions>
-                                    <MenuItem Text="Remover" IsDestructive="True"
-                                              Command="{Binding BindingContext.DeleteAtividade, Source={x:Reference pageAtividade}}" 
-                                              CommandParameter="{Binding .}" />
-                                    <MenuItem Text="Editar" IsDestructive="False"
-                                              Command="{Binding BindingContext.EditarAtividade, Source={x:Reference pageAtividade}}"
-                                              CommandParameter="{Binding .}" />
-                                </ViewCell.ContextActions>
-                                <StackLayout Padding="5,0,5,0">
-                                    <Label Text="{Binding DataCadastro}" Font="12" />
-                                    <Label Text="{Binding DataEntrega}" Font="12" />
-                                    <Label Text="{Binding TipoAvaliacao}" Font="12" />
-                                    <Label Text="{Binding Descricao}" Font="12" />
-                                    <Label Text="{Binding Nota}" Font="12" />
-                                </StackLayout>
+                                <ContentView>
+                                    <StackLayout Padding="20">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Descricao}" FontSize="15" FontAttributes="Bold" />
+                                        </StackLayout>
+                                        <Label Text="{Binding DataEntrega, StringFormat='Data Entrega: {0:MMMM d, yyyy}'}"  Font="15"/>
+                                        <Label Text="{Binding TipoAvaliacao, StringFormat='Avaliação: {0}'}" FontSize="15"/>
+                                        <Label Text="{Binding ValorAvaliacao, StringFormat='Valor Avaliação: {0}'}" FontSize="15"/>
+                                    </StackLayout>
+                                </ContentView>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

@@ -22,11 +22,6 @@ namespace XF.AzureApp.ViewModels
 
         public ICommand RegisterCommand => new Command(async () => await Registrar());
 
-        public EditarAtividadeViewModel()
-        {
-            Atividade = new Atividade();
-        }
-
         public async Task Registrar()
         {
             try

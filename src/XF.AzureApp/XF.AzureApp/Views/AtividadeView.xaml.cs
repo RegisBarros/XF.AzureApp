@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using XF.AzureApp.Models;
-using XF.AzureApp.Services;
 using XF.AzureApp.ViewModels;
 
 namespace XF.AzureApp.Views
@@ -16,10 +7,14 @@ namespace XF.AzureApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AtividadeView : ContentPage
     {
-        AtividadeViewModel atividadeViewModel = new AtividadeViewModel();
+        public AtividadeViewModel AtividadeViewModel { get; set; }
+
         public AtividadeView()
         {
-            BindingContext = atividadeViewModel;
+            AtividadeViewModel = new AtividadeViewModel();
+
+            BindingContext = AtividadeViewModel;
+
             InitializeComponent();
         }
 
@@ -28,13 +23,8 @@ namespace XF.AzureApp.Views
             base.OnAppearing();
 
             lstAtividades.IsRefreshing = !lstAtividades.IsRefreshing;
-            await atividadeViewModel.Carregar();
+            await AtividadeViewModel.Carregar();
             lstAtividades.IsRefreshing = !lstAtividades.IsRefreshing;
         }
-        async void AddAtividadeButtonClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new EditarAtividade());
-        }
-
     }
 }

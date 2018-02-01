@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 using Xamarin.Forms;
 using XF.AzureApp.Services;
 using XF.AzureApp.ViewModels;
@@ -23,7 +19,7 @@ namespace XF.AzureApp
             if (LoginViewModel == null)
                 LoginViewModel = new LoginViewModel();
 
-            MainPage = new NavigationPage(new LoginView() { BindingContext = LoginViewModel });
+            MainPage = new NavigationPage(new LoginView());
         }
 
         public static void Init(IAuthenticate authenticator)
