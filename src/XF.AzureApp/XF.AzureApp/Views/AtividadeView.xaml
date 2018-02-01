@@ -18,9 +18,9 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!--StackLayout x:Name="layPesquisa" Grid.Row="0" Padding="5">
+            <StackLayout x:Name="layPesquisa" Grid.Row="0" Padding="5">
                 <SearchBar Placeholder="Pesquisar por nome" Text="{Binding PesquisaPorNome}" />
-            </-->
+            </StackLayout>
 
             <StackLayout x:Name="layLista" Grid.Row="1" Padding="20">
                 <ListView x:Name="lstAtividades" ItemsSource="{Binding Atividades}" HasUnevenRows="True">

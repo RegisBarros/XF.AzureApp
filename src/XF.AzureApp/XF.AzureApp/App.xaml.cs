@@ -19,7 +19,7 @@ namespace XF.AzureApp
             if (LoginViewModel == null)
                 LoginViewModel = new LoginViewModel();
 
-            MainPage = new NavigationPage(new LoginView());
+            MainPage = new NavigationPage(new LoginView() { BindingContext = LoginViewModel });
         }
 
         public static void Init(IAuthenticate authenticator)
