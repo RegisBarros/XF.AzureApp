@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XF.AzureApp.ViewModels"
              x:Class="XF.AzureApp.Views.AtividadeView"
              x:Name="pageAtividade"
              Title="Atividades">
@@ -17,9 +18,9 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <StackLayout x:Name="layPesquisa" Grid.Row="0" Padding="5">
+            <!--StackLayout x:Name="layPesquisa" Grid.Row="0" Padding="5">
                 <SearchBar Placeholder="Pesquisar por nome" Text="{Binding PesquisaPorNome}" />
-            </StackLayout>
+            </-->
 
             <StackLayout x:Name="layLista" Grid.Row="1" Padding="20">
                 <ListView x:Name="lstAtividades" ItemsSource="{Binding Atividades}" HasUnevenRows="True">
