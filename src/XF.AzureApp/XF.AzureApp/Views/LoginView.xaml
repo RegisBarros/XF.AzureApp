@@ -1,17 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XF.AzureApp.Views.LoginView">
+             x:Class="XF.AzureApp.Views.LoginView"
+             Title="Login">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Image x:Name="imgLogin" Source="twitterlogin.png" WidthRequest="200" HeightRequest="150">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer
+            <Label Text="Acesso" Font="20" HorizontalOptions="Center" />
+            <Entry x:Name="txtUsuario" Text="{Binding Usuario}"
+                   Placeholder="Usuario" WidthRequest="250" />
+            <Entry x:Name="pwdSenha" Text="{Binding Senha}"
+                   Placeholder="Senha" IsPassword="True" WidthRequest="250" />
+            <StackLayout Padding="10" Orientation="Horizontal"
+                         HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="btnLogin" Text="Entrar" Command="{Binding AutenticarCommand}" />
+            </StackLayout>
+            <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="OU" Font="20" FontAttributes="Bold" HorizontalOptions="Center" />
+            </StackLayout>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand"  >
+                <BoxView  BackgroundColor="Black" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand" />
+                <Image x:Name="imgLogin" Source="twitterlogin.png" WidthRequest="200" HeightRequest="150">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
                             Tapped="TapGestureRecognizer_Tapped"
                             NumberOfTapsRequired="1">
-                    </TapGestureRecognizer>
-                </Image.GestureRecognizers>
-            </Image>
+                        </TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+                <BoxView  BackgroundColor="Black" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
