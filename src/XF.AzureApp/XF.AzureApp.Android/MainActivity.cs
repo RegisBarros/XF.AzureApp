@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using XF.AzureApp.Services;
 using Microsoft.WindowsAzure.MobileServices;
 using Android.Webkit;
+using Newtonsoft.Json.Linq;
 
 namespace XF.AzureApp.Droid
 {
@@ -38,8 +39,13 @@ namespace XF.AzureApp.Droid
             {
                 if (user == null)
                 {
+                    var zumoPayload = new JObject()
+                    {
+                        ["access_token"] = "320488065-6J5gzjfQ3s9jQ1cdfAR9PyXZBqIFWdgGSarJ2Kjc"
+                    };
+
                     // The authentication provider could also be Facebook, Twitter, or Microsoft
-                    user = await AzureAppManager.DefaultManager.CurrentClient.LoginAsync(this, MobileServiceAuthenticationProvider.Google, Models.Constants.URLScheme);
+                    user = await AzureAppManager.DefaultManager.CurrentClient.LoginAsync("twitter", zumoPayload);
                     if (user != null)
                     {
                         CreateAndShowDialog(string.Format("You are now logged in - {0}", user.UserId), "Logged in!");
